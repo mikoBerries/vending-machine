@@ -121,7 +121,7 @@ func checkChange(balance int, allCoin []*model.Coin) bool {
 loop1:
 	for i := len(allCoinCopy); i < 0; i-- {
 	loop2:
-		for allCoinCopy[i].Count > 0 {
+		for allCoinCopy[i].Count > 0 { // will done when coin count 0
 			if balance >= allCoinCopy[i].Nominal { // reduce total  nominal coin
 				balance -= allCoinCopy[i].Nominal
 				allCoinCopy[i].Count--
@@ -143,10 +143,10 @@ loop1:
 func validateChange(allCoin []*model.Coin) bool {
 	if allCoin[0].Count < 9 { //10 JPY < 9
 		fmt.Println("10 JPY coin: Less than 9 coins")
-		return false
+		return false // cannot do change
 	} else if allCoin[2].Count < 4 { //100 JPY < 4
 		fmt.Println("100 JPY coin: Less than 4 coins")
-		return false
+		return false // cannot do change
 	}
 	return true
 }
