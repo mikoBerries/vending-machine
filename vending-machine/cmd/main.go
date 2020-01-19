@@ -59,8 +59,9 @@ func main() {
 
 	//bool buy
 	buy := false
+
 	//inputed Coin
-	inputedCoinsS := make([]int, 0)
+	inputedCoins := make([]int, 0)
 	for {
 		fmt.Println("----------------------------------")
 		fmt.Println("[Input amount]\t", balance, " JPY")
@@ -75,13 +76,13 @@ func main() {
 		fmt.Scanln(&command[0], &command[1])
 
 		if command[0] == 1 { //insert coin to vending machine -> allCoin, balance
-			balance, inputedCoinsS = system.CalculationInsertCoin(balance, allCoin, inputedCoinsS, command[1])
+			balance, inputedCoins = system.CalculationInsertCoin(balance, allCoin, inputedCoins, command[1])
 		} else if command[0] == 2 { //choose goods to buy -> Items
 			items, balance = system.ChooseItem(items, goods, balance, allCoin, command[1])
 		} else if command[0] == 3 { //get Items (buyed) (flush object)
 			items = make([]model.Item, 0)
 		} else if command[0] == 4 { //fill returnCoins
-			returnCoins, inputedCoinsS, balance = system.CalculateReturnCoin(returnCoins, balance, allCoin, buy, inputedCoinsS)
+			returnCoins, inputedCoins, balance = system.CalculateReturnCoin(returnCoins, balance, allCoin, buy, inputedCoins)
 		} else if command[0] == 5 { //get returnCoins (flush Object)
 			returnCoins = make([]int, 0)
 		}
