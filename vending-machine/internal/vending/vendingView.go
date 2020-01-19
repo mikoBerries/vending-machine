@@ -54,16 +54,16 @@ func DisplayChanges(coins []*model.Coin) {
 
 	for _, coin := range coins {
 		if coin.Nominal == 10 {
-			if coin.Count > 0 {
-				JpyString10 += "Change"
-			} else {
+			if coin.Count < 9 {
 				JpyString10 += "No Change"
+			} else {
+				JpyString10 += "Change"
 			}
 		} else if coin.Nominal == 100 {
-			if coin.Count > 0 {
-				JpyString100 += "Change"
-			} else {
+			if coin.Count < 4 {
 				JpyString100 += "No Change"
+			} else {
+				JpyString100 += "Change"
 			}
 		}
 	}
